@@ -22,6 +22,7 @@ def gcd_route():
 
 @app.route('/lindio', methods=['GET', 'POST'])
 def lindio_route():
+    result = None
     if request.method == 'POST':
         try:
             a = int(request.form['a'])
@@ -31,7 +32,7 @@ def lindio_route():
             return render_template('lindio.html', result=result)
         except ValueError:
             return render_template('lindio.html', error="Invalid input! Please enter integers.")
-    return render_template('lindio.html')
+    return render_template('lindio.html', result=result)
 
 @app.route('/crt', methods=['GET', 'POST'])
 def crt_route():
@@ -50,6 +51,7 @@ def crt_route():
 
 @app.route('/lincong', methods=['GET', 'POST'])
 def lincong_route():
+    result = None
     if request.method == 'POST':
         try:
             a = int(request.form['a'])
@@ -59,7 +61,7 @@ def lincong_route():
             return render_template('lincong.html', result=result)
         except ValueError:
             return render_template('lincong.html', error="Invalid input! Please enter integers.")
-    return render_template('lincong.html')
+    return render_template('lincong.html', result=result)
 
 @app.route('/rsa', methods=['GET', 'POST'])
 def rsa_route():

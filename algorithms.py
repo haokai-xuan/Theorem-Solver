@@ -40,7 +40,7 @@ def lindio(a, b, c):
 
     if d == 0 or c % d != 0:
         print("No solution")
-        return None
+        return "No Solution"
     
     x0, y0 = eea(a, b)
     factor = c // d
@@ -50,7 +50,7 @@ def lindio(a, b, c):
     print("General solution:")
     print(f"{{(x, y) : x = {x0 * factor} + {b // d}n, y = {y0 * factor} - {a // d}n, n ∈ ℤ}}")
 
-    return x0 * factor, y0 * factor
+    return x0 * factor, y0 * factor, b // d, a // d
 
 def crt(a1, m1, a2, m2):
     d = gcd(m1, m2)
@@ -59,7 +59,8 @@ def crt(a1, m1, a2, m2):
         print("No Solution")
         return "No Solution"
     
-    x0, y0 = lindio(-m1, m2, a1 - a2)
+    result = lindio(-m1, m2, a1 - a2)
+    x0 = result[0]
     n0 = m1 * x0 + a1
 
     n0 %= m1 * m2
@@ -69,18 +70,19 @@ def crt(a1, m1, a2, m2):
     return n0, m1 * m2
 
 def lincong(a, b, m):
+    d = gcd(a, m)
     result = lindio(-a, m, -b)
 
-    if result is None:
+    if result == "No Solution":
         print("No solution")
-        return None
+        return result
     
-    x, y = result
+    x = result[0]
 
-    x %= m
+    x %= (m // d)
 
     print(f"x ≡ {x} (mod {m})")
-    return x
+    return x, m // d
 
 def rsa_e(M, e, n):
     return pow(M, e) % n

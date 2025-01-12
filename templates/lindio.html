@@ -5,7 +5,7 @@
 {% block content %}
 <div class="theorem-container">
     <h1>Linear Diophantine Calculator</h1>
-    <p>Finds a particular solution to a linear diophatine equation of the form $ ax + by = c $ .</p>
+    <p>Finds one and all solutions to a linear diophatine equation of the form $ ax + by = c $ .</p>
     <form method="post" id="lindio-form">
         <p>
             <input type="number" placeholder="a" id="a" name="a" required>
@@ -21,9 +21,15 @@
     </form>
 
     {% if result is not none %}
-        <p class="result">{{ result }}</p>
+        {% if result == "No Solution" %}
+            <p style="color: red;">No Solution.</p>
+        {% else %}
+            <p class="result">(x<sub>0</sub>, y<sub>0</sub>) = ({{ result[0] }}, {{ result[1] }})</p>
+            <p class="result">{ (x, y) : x = {{ result[0] }} + {{ result[2] }}n, y = {{ result[1] }} - {{ result[3] }}n, n &#x2208; &#x2124; }</p>
+            <p style="opacity: 33%; font-size: 15px">*Note the signs!</p>
+        {% endif %}
     {% else %}
-        <p style="color: red;">No Solution</p>
+        <!-- No result to display, nothing shown -->
     {% endif %}
 </div>
 <script src="{{ url_for('static', filename='js/lindio.js') }}"></script>
