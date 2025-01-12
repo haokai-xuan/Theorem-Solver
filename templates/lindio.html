@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Theorem Solver - Linear Diophantine{% endblock %}
+
+{% block content %}
+<div class="theorem-container">
+    <h1>Linear Diophantine Calculator</h1>
+    <p>Finds a particular solution to a linear diophatine equation of the form $ ax + by = c $ .</p>
+    <form method="post" id="lindio-form">
+        <p>
+            <input type="number" placeholder="a" id="a" name="a" required>
+            $ x $
+            $ + $
+            <input type="number" placeholder="b" id="b" name="b" required>
+            $ y $
+            $ = $
+            <input type="number" placeholder="c" id="c" name="c" required>
+        </p>
+
+        <button class="calculate-button" type="submit">Calculate</button>
+    </form>
+
+    {% if result is not none %}
+        <p class="result">{{ result }}</p>
+    {% else %}
+        <p style="color: red;">No Solution</p>
+    {% endif %}
+</div>
+<script src="{{ url_for('static', filename='js/lindio.js') }}"></script>
+{% endblock %}
+

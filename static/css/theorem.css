@@ -1,0 +1,100 @@
+.theorem-container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+
+p {
+    font-size: 25px;
+}
+
+/* Styling for headers */
+h1 {
+    font-size: 2.5rem;
+    color: #2d2d2d;
+}
+
+/* Inputs styling */
+input {
+    width: 150px;
+    height: 35px;
+    margin: 0 10px;
+    padding: 5px;
+    font-size: 18px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+/* Add border color change when input is focused */
+input:focus {
+    border-color: #343a3f;
+    outline: none;
+}
+
+.result {
+    font-weight: bold;
+}
+
+/* Calculate button */
+.calculate-button {
+    border-radius: 8px;
+    background: linear-gradient(135deg, #83a2c1, #627d98);
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 15px;
+}
+
+.calculate-button:hover {
+    background: linear-gradient(135deg, #627d98, #83a2c1);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.calculate-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure responsive design */
+@media (max-width: 768px) {
+    .theorem-container {
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .gcd-formula p {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 550px) {
+    input {
+        width: 50px;
+        height: 35px;
+        margin: 0 10px;
+        padding: 5px;
+        font-size: 16px;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        transition: border-color 0.3s;
+    }
+
+    p {
+        font-size: 12px;
+    }
+}

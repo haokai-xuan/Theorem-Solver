@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Theorem Solver - GCD{% endblock %}
+
+{% block content %}
+<div class="theorem-container">
+    <h1>GCD Calculator</h1>
+    <p>
+        $ \textsf{gcd}(a, b) $ finds the greatest common divisor of $ a $ and $ b $.
+    </p>
+    <form method="post" id="gcd-form">
+        <p>$ \textsf{gcd}( $<input type="number" placeholder="a" id="a" name="a" required>,
+            <input type="number" placeholder="b" id="b" name="b" required>$ ) $</p>
+        <button class="calculate-button" type="submit">Calculate</button>
+    </form>
+
+    {% if result is not none %}
+        <p class="result">{{ result }}</p>
+    {% endif %}
+</div>
+<script src="{{ url_for('static', filename='js/gcd.js') }}"></script>
+{% endblock %}
+

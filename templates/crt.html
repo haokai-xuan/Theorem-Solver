@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Theorem Solver - Chinese Remainder Theorem{% endblock %}
+
+{% block content %}
+<div class="theorem-container">
+    <h1>Chinese Remainder Theorem Calculator</h1>
+    <p>Finds the solution to a system of linear congruences.</p>
+    <form method="post" id="crt-form">
+        <p>
+            $ n \equiv $
+            <input type="number" placeholder="a1" id="a1" name="a1" required>
+            $ ( \textsf{mod} $
+            <input type="number" placeholder="m1" id="m1" name="m1" required>
+            $ ) $
+        </p>
+        <p>
+            $ n \equiv $
+            <input type="number" placeholder="a2" id="a2" name="a2" required>
+            $ ( \textsf{mod} $
+            <input type="number" placeholder="m2" id="m2" name="m2" required>
+            $ ) $
+        </p>
+        <button class="calculate-button" type="submit">Calculate</button>
+    </form>
+
+    {% if result is not none %}
+    {% if result == "No Solution" %}
+        <p style="color: red;">Invalid input! Please enter valid numbers.</p>
+    {% else %}
+        <p class="result">$ n_0 \equiv $ {{ result[0] }} $ (\textsf{mod} $ {{ result[1] }} $ ) $</p>
+    {% endif %}
+    {% else %}
+        <!-- No result to display, nothing shown -->
+    {% endif %}
+</div>
+<script src="{{ url_for('static', filename='js/crt.js') }}"></script>
+{% endblock %}
+

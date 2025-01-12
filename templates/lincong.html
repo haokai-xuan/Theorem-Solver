@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Theorem Solver - Linear Congruences{% endblock %}
+
+{% block content %}
+<div class="theorem-container">
+    <h1>Linear Congruence Calculator</h1>
+    <p>Finds one particular solution to a linear congruence of the form $ ax \equiv b \; (\textsf{mod} \; m) $</p>
+    <form method="post" id="lincong-form">
+        <p>
+            <input type="number" placeholder="a" id="a" name="a" required>
+            $ x $
+            $ \equiv $
+            <input type="number" placeholder="b" id="b" name="b" required>
+            $ (\textsf{mod} $
+            <input type="number" placeholder="m" id="m" name="m" required>
+            $ ) $
+        </p>
+
+        <button class="calculate-button" type="submit">Calculate</button>
+    </form>
+
+    {% if result is not none %}
+        <p class="result">{{ result }}</p>
+    {% else %}
+        <p style="color: red;">No Solution</p>
+    {% endif %}
+</div>
+<script src="{{ url_for('static', filename='js/lincong.js') }}"></script>
+{% endblock %}
+
