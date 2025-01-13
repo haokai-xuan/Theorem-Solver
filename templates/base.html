@@ -53,9 +53,8 @@
                       RSA
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#">Encrypt</a>
-                      <a class="dropdown-item" href="#">Decrypt</a>
-                      <a class="dropdown-item" href="#">Get E/D Key</a>
+                      <a class="dropdown-item" href="{{ url_for('rsa_route') }}">Encrypt/Decrypt</a>
+                      <a class="dropdown-item" href="{{ url_for('rsakey_route') }}">Get E/D Key</a>
                       <!--
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="#">Something else here</a>
@@ -82,10 +81,12 @@
     <footer>
         <p>Copyright &copy;2025</p>
         <p>Created by <a href="https://www.haokai-xuan.com/" target="_blank"><span style="font-weight: bold;">Haokai Xuan</span></a></p>
+        <p>View on <a href="https://github.com/haokai-xuan/Theorem-Solver" target="_blank"><span style="font-weight: bold;">GitHub</span></a></p>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../static/js/script.js"></script>
 </body>
 </html>

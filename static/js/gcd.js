@@ -1,15 +1,15 @@
 window.onload = function() {
-    document.getElementById('a').focus();
+    document.getElementById('gcd-a').focus();
 
     if(localStorage.getItem('gcd-a') && localStorage.getItem('gcd-b')) {
-        document.getElementById('a').value = localStorage.getItem('gcd-a');
-        document.getElementById('b').value = localStorage.getItem('gcd-b');
+        document.getElementById('gcd-a').value = localStorage.getItem('gcd-a');
+        document.getElementById('gcd-b').value = localStorage.getItem('gcd-b');
     }
 }
 
 const form = document.getElementById('gcd-form');
-const gcd_a = document.getElementById('a');
-const gcd_b = document.getElementById('b');
+const gcd_a = document.getElementById('gcd-a');
+const gcd_b = document.getElementById('gcd-b');
 
 form.addEventListener('submit', () => {
     localStorage.setItem('gcd-a', gcd_a.value);

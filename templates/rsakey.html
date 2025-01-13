@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Theorem Solver - RSA Keys{% endblock %}
+
+{% block content %}
+<div class="theorem-container">
+    <h1>RSA Public/Private Key Calculator</h1>
+    <p>Determines the corresponding key $ k $ for encryption or decryption given two primes $ p, q$ by solving:</p>
+    <p>$ k_1k_2 \equiv 1 \; (\textsf{mod } (p-1)(q-1)) $</p>
+    <form method="post" id="rsakey-form">
+        <p>
+            <input type="number" placeholder="k1" id="rsakey-key" name="key" required>
+            $ k_2 $
+            $ \equiv 1 $
+            $ (\textsf{mod} ( $
+            <input type="number" placeholder="p" id="rsakey-p" name="p" required>
+            $ -1) ( $
+            <input type="number" placeholder="q" id="rsakey-q" name="q" required>
+            $ -1))$
+        </p>
+
+        <button class="calculate-button" type="submit">Calculate</button>
+    </form>
+
+    {% if result is not none %}
+        {% if result == "No Solution" %}
+            <p style="color: red;">No Solution.</p>
+        {% else %}
+            <p class="result">{{ result[0] }}</p>
+            <!-- <p class="result">{ x &#x2208; &#x2124; : x &#x2261; {{ result[0] }} (mod {{ result[1] }}) }</p> -->
+        {% endif %}
+    {% else %}
+    <!-- No result to display, nothing shown -->
+    {% endif %}
+</div>
+<script src="{{ url_for('static', filename='js/rsakey.js') }}"></script>
+{% endblock %}
+

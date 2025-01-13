@@ -67,18 +67,28 @@ def lincong_route():
 def rsa_route():
     if request.method == 'POST':
         try:
-            operation = request.form['operation']
-            value = int(request.form['value'])
+            text = int(request.form['text'])
             key = int(request.form['key'])
             n = int(request.form['n'])
-            if operation == 'encrypt':
-                result = rsa_e(value, key, n)
-            elif operation == 'decrypt':
-                result = rsa_d(value, key, n)
+            result = rsa(text, key, n)
             return render_template('rsa.html', result=result)
         except ValueError:
             return render_template('rsa.html', error="Invalid input! Please enter integers.")
     return render_template('rsa.html')
+
+@app.route('/rsakey', methods=['GET', 'POST'])
+def rsakey_route():
+    result = None
+    if request.method == 'POST':
+        try:
+            key = int(request.form['key'])
+            p = int(request.form['p'])
+            q = int(request.form['q'])
+            result = get_key(key, p, q)
+            return render_template('rsakey.html', result=result)
+        except ValueError:
+            return render_template('rsakey.html', error="Invalid input! Please enter integers.")
+    return render_template('rsakey.html', result=result)
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -84,11 +84,11 @@ def lincong(a, b, m):
     print(f"x ≡ {x} (mod {m})")
     return x, m // d
 
-def rsa_e(M, e, n):
-    return pow(M, e) % n
+def rsa(text, key, n):
+    return pow(text, key) % n
 
+'''
 def rsa_d(C, d, n):
-    '''
     result = product_of_primes(n)
 
     if result is None:
@@ -107,8 +107,8 @@ def rsa_d(C, d, n):
     R = crt(a1, n1, a2, n2)
 
     return R
-    '''
     return pow(C, d) % n
+'''
     
 # key * x ≡ 1 (mod (p - 1) * (q - 1))
 def get_key(key, p, q):

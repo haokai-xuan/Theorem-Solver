@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Theorem Solver - RSA{% endblock %}
+
+{% block content %}
+<div class="theorem-container">
+    <h1>RSA Calculator</h1>
+    <p>Encrypt plaintext $ M $ with public key $ (e, n) $ or decrypt ciphertext $ C $ with private key $ (d, n) $ using the RSA algorithm of the form:</p>
+    <p>$ C \equiv M^e \; (\textsf{mod } n) $ </p>
+    <p>$ M \equiv C^d \; (\textsf{mod } n) $ </p>
+    <p>Where $ 0 \; \le C < n $ and $ 0 \; \le M < n $</p>
+    
+    <form method="post" id="rsa-form">
+        <p>
+            $ R \equiv $
+            <input type="number" id="rsa-text" name="text" required>
+            <sup>
+                <input class="exp-input" type="number" id="rsa-key" name="key" required>
+            </sup>
+            $ (\textsf{mod } $
+            <input type="number" id="rsa-n" name="n" required>
+            $ ) $
+        </p>
+
+        <button class="calculate-button" type="submit">Calculate</button>
+    </form>
+
+    {% if result is not none %}
+        <p class="result">{{ result }}</p>
+    {% elif error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+</div>
+
+<script src="{{ url_for('static', filename='js/rsa.js') }}"></script>
+{% endblock %}
