@@ -90,5 +90,9 @@ def rsakey_route():
             return render_template('rsakey.html', error="Invalid input! Please enter integers.")
     return render_template('rsakey.html', result=result)
 
+@app.route('/about', methods=['GET'])
+def about_route():
+    return render_template('about.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
